@@ -31,7 +31,7 @@ Place all written answers from `assignment-05.md` here for easier grading.
 
   If $m$ is a power of 2, each character length of $log{_2}{m}$, so the total cost is $nlog{_2}{m}$
 
-  If $m$ isn't a power of 2, letting $k = log{_2}{m}$ rounded down the character lengths are either $k$ or $k + 1$, and the average length by counting the leaves at those 2 depths is $k + 2 - \frac{2^{k + 1}}{m} $,  which gives a total cost of $n(k + 2 - \frac{2^{k + 1}}{m}} $
+  If $m$ isn't a power of 2, letting $k = log{_2}{m}$ rounded down the character lengths are either $k$ or $k + 1$, and the average length by counting the leaves at those 2 depths is $k + 2 - \frac{2^{k + 1}}{m}$,  which gives a total cost of $n(k + 2 - \frac{2^{k + 1}}{m}$
 
 **2: Making Change**
 

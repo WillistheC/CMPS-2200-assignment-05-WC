@@ -42,7 +42,7 @@ Let $L$ be the amound of dollars not yet made change for from $N$
 
 Let $k = log{_2}{L}$ rounded down to the nearest integer
 
-repeatedly select coins worth $2^{k}$ dollars until $L = 0$
+repeatedly select coins worth $2^{k}$ dollars after finding $k$ with the new $L$ until $L = 0$
 
 
 - **2b. (5 pts)** Prove that this algorithm is optimal by proving the greedy

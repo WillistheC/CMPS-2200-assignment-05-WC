@@ -60,9 +60,17 @@ The first selection of a coin worth $2^{k}$ must be optimal because $2^{0} + 2^{
 
 Then the algorithm must find the optimal $L$ for $L = N - 2^{k}$ which it does by treating $L$ as a new $N$ and repeating the step already proved to be optimal
 
-Therefore the algoritm hold for all $N$
+Therefore, the algorithm holds for all $N$
 
 - **2c. (4 pts)** What is the work and span of your algorithm?
 
+Note: Worst case (most coins) is $N = 2^{k} - 1$ for some $k$
 
+Span: for the worst case, the algorithm finds coins worth $2^{x}$ for $x = 0, 1,... k-1$, which is $k$ coins
+
+The whole chain is dependent, and $k = log{_2}{N}$, so $S(n) = O(log{_2}{n}) = O(logn)$
+
+Work is the total number of operations performed, which is the total number of coins found (already found above)
+
+Therefore, $W(n) = O(logn)$
 

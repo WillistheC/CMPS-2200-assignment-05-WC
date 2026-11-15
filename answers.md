@@ -74,4 +74,4 @@ Work is the total number of operations performed, which is the total number of c
 
 Therefore, $W(n) = O(logn)$
 
-- **3: An optimal edit algorithm consists of a first match or edit followed by an optimal solution to the remaining sub-problem. Otherwise, replacing the remaining edits with a cheaper solution would improve the original sequence. This process is repeated dynamically until the remaining sub-problem is empty (the problem is complete)
+**3: An optimal edit algorithm consists of a first match or edit followed by an optimal solution to the remaining sub-problem. Otherwise, replacing the remaining edits with a cheaper solution would improve the original sequence. This process is repeated dynamically until the remaining sub-problem is empty (the problem is complete)

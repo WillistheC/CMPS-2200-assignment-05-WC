@@ -94,7 +94,6 @@ test_cases = [('book', 'back'), ('kookaburra', 'kookybird'), ('relevant', 'eleph
 alignments = [('book', 'back'), ('kookaburra', 'kookybird-'), ('relev-ant','-elephant')]
 
 def MED(S, T):
-    # TODO - modify to account for insertions, deletions and substitutions
     if (S == ""):
         return(len(T))
     elif (T == ""):
@@ -103,16 +102,55 @@ def MED(S, T):
         if (S[0] == T[0]):
             return(MED(S[1:], T[1:]))
         else:
-            return(1 + min(MED(S, T[1:]), MED(S[1:], T)))
+            return(1 + min(MED(S, T[1:]), MED(S[1:], T),  MED(S[1:], T[1:])))
 
 
 def fast_MED(S, T):
-    # TODO -  implement bottom-up memoization
-    # returns only the edit distance cost
-    pass
+    m, n = len(S), len(T)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        dp[i][0] = i
+    for j in range(n + 1):
+        dp[0][j] = j
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if S[i - 1] == T[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = 1 + min(dp[i][j - 1], dp[i - 1][j], dp[i - 1][j - 1])
+    return dp[m][n]
 
 def fast_align_MED(S, T):
-    # TODO - implement bottom-up memoization, allowing
-    # for traceback of alignment
-    # returns the two alignments (see test_align)
-    pass
+    m, n = len(S), len(T)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(m + 1):
+        dp[i][0] = i
+    for j in range(n + 1):
+        dp[0][j] = j
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if S[i - 1] == T[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = 1 + min(dp[i][j - 1], dp[i - 1][j], dp[i - 1][j - 1])
+    aligned_S = []
+    aligned_T = []
+    i, j = m, n
+    while i > 0 or j > 0:
+        if (i > 0 and j > 0 and dp[i][j] == dp[i - 1][j - 1] + (0 if S[i - 1] == T[j - 1] else 1)):
+            aligned_S.append(S[i - 1])
+            aligned_T.append(T[j - 1])
+            i -= 1
+            j -= 1
+        elif i > 0 and dp[i][j] == dp[i - 1][j] + 1:
+            aligned_S.append(S[i - 1])
+            aligned_T.append("-")
+            i -= 1
+        else:
+            aligned_S.append("-")
+            aligned_T.append(T[j - 1])
+            j -= 1
+    return (
+        "".join(reversed(aligned_S)),
+        "".join(reversed(aligned_T))
+    )

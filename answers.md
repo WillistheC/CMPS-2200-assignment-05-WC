@@ -38,7 +38,11 @@ Place all written answers from `assignment-05.md` here for easier grading.
 - **2a. (5 pts)** Given a $N$ dollars, state a greedy algorithm for producing
 as few coins as possible that sum to $N$.
 
+Let $L$ be the amound of dollars not yet made change for from $N$
 
+Let $k = log{_2}{L}$ rounded down to the nearest integer
+
+repeatedly select coins worth $2^{k}$ dollars until $L = 0$
 
 
 - **2b. (5 pts)** Prove that this algorithm is optimal by proving the greedy

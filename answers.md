@@ -54,10 +54,13 @@ Inductive Hypothesis: assume the algorithm holds for all $m < N$
 
 For $N > 0$; $k = log{_2}{N}$; $2^{k} <= N < 2^{k+1}$, so the first coin selected is worth $2^{k}$
 
-For the algorithm to be optimal, there can be no duplicate coins because for any $x >= 0$, $2^{x} + 2^{x} = 2^{x+1}$, so the two duplicate coins could be replaced by one single higher domination coin
+For the algorithm to be optimal, there can be no duplicate coins because for any $x >= 0$, $2^{x} + 2^{x} = 2^{x+1}$, so the two duplicate coins could be replaced by one single higher denomination coin
 
 The first selection of a coin worth $2^{k}$ must be optimal because $2^{0} + 2^{1}... + 2^{k-1} = 2^{k} - 1 < N$
 
+Then the algorithm must find the optimal $L$ for $L = N - 2^{k}$ which it does by treating $L$ as a new $N$ and repeating the step already proved to be optimal
+
+Therefore the algoritm hold for all $N$
 
 - **2c. (4 pts)** What is the work and span of your algorithm?
 
